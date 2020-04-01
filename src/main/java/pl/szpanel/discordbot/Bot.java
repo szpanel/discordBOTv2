@@ -4,19 +4,23 @@ import com.jagrosh.jdautilities.command.Command;
 import com.jagrosh.jdautilities.command.CommandClient;
 import com.jagrosh.jdautilities.command.CommandClientBuilder;
 import com.mongodb.client.MongoDatabase;
+import com.sedmelluq.discord.lavaplayer.jdaudp.NativeAudioSendFactory;
 import net.dv8tion.jda.api.JDABuilder;
 import net.dv8tion.jda.api.entities.Activity;
 import org.bson.Document;
 import pl.szpanel.discordbot.commands.HelpConsumer;
+import pl.szpanel.discordbot.commands.Music;
 import pl.szpanel.discordbot.commands.Test;
 import pl.szpanel.discordbot.data.configs.Config;
 import pl.szpanel.discordbot.data.databases.Mongo;
+import pl.szpanel.discordbot.musicbot.MusicBotManager;
 
 import javax.security.auth.login.LoginException;
 import java.util.function.Consumer;
 
 public class Bot {
     private static Config config = Config.getConfig();
+    public static MusicBotManager musicBotManager = new MusicBotManager();
 
     public static void main(String[] args) throws LoginException {
         BotsGuildSettingsManager botsGuildSettingsManager = new BotsGuildSettingsManager();
@@ -24,12 +28,14 @@ public class Bot {
                 .setGuildSettingsManager(botsGuildSettingsManager)
                 .setHelpConsumer(new HelpConsumer())
                 .addCommands(
-                        new Test()
+                        new Test(),
+                        new Music()
                 ).setOwnerId(String.valueOf(config.GUILD_OWNER()))
                 .build();
 
         JDABuilder.createDefault(config.API_TOKEN())
                 .addEventListeners(commandClient)
+                .setAudioSendFactory(new NativeAudioSendFactory())
                 .build();
 
         MongoDatabase database = Mongo.getConnection().getDatabase("mc");

@@ -69,7 +69,7 @@ public class GuildMusicManager {
         musicManager.loadItemOrdered(this, trackUrl, new AudioLoadResultHandler() {
             @Override
             public void trackLoaded(AudioTrack track) {
-                channel.sendMessage("Adding to queue " + track.getInfo().title).queue();
+                channel.sendMessage("Dodano do kolejki utwór " + track.getInfo().title).queue();
 
                 play(channel.getGuild(), track);
             }
@@ -81,19 +81,19 @@ public class GuildMusicManager {
                     firstTrack = playlist.getTracks().get(0);
                 }
 
-                channel.sendMessage("Adding to queue " + firstTrack.getInfo().title + " (first track of playlist " + playlist.getName() + ")").queue();
+                channel.sendMessage("Dodawanie do kolejki " + firstTrack.getInfo().title + " (pierwszy utwór playlisty " + playlist.getName() + ")").queue();
 
                 play(channel.getGuild(), firstTrack);
             }
 
             @Override
             public void noMatches() {
-                channel.sendMessage("Nothing found by " + trackUrl).queue();
+                channel.sendMessage("Nic nie znaleziono w " + trackUrl).queue();
             }
 
             @Override
             public void loadFailed(FriendlyException exception) {
-                channel.sendMessage("Could not play: " + exception.getMessage()).queue();
+                channel.sendMessage("Nie można włączyć: " + exception.getMessage()).queue();
             }
         });
     }

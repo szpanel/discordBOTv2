@@ -64,7 +64,7 @@ public class GuildMusicManager {
     public void loadAndPlay(final TextChannel channel, final String trackUrl, Member commandSender) {
         senderVoiceChannel = channel.getGuild().getVoiceChannels().stream()
                 .filter(voice -> voice.getMembers().contains(commandSender))
-                .limit(1).findFirst().orElse(musicBotChannel);
+                .findFirst().orElse(musicBotChannel);
         AudioPlayerManager musicManager = MusicBotManager.playerManager;
         musicManager.loadItemOrdered(this, trackUrl, new AudioLoadResultHandler() {
             @Override

@@ -47,6 +47,8 @@ public class Music extends Command {
                     sendCurrentSongInfo(event.getTextChannel(), guildMusicManager);
                 } else if (args[0].equalsIgnoreCase("queue")) {
                     sendQueue(event.getChannel(), guildMusicManager);
+                } else if (args[0].equalsIgnoreCase("skip")) {
+                    skipSong(event.getChannel(), guildMusicManager);
                 }
                 break;
             case 2:
@@ -56,6 +58,12 @@ public class Music extends Command {
                 }
                 break;
         }
+    }
+
+    private void skipSong(MessageChannel channel, GuildMusicManager guildMusicManager) {
+        final String songTitle = guildMusicManager.player.getPlayingTrack().getInfo().title;
+        guildMusicManager.scheduler.nextTrack();
+        channel.sendMessage("Utwór " + songTitle + " pomyślnie pominięty.").queue();
     }
 
     private void sendCurrentSongInfo(TextChannel textChannel, GuildMusicManager guildMusicManager) {

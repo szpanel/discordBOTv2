@@ -19,8 +19,6 @@ public final class HelpConsumer implements Consumer<CommandEvent> {
                 .append("`\n"));
         User owner = commandEvent.getJDA().getUserById(commandEvent.getClient().getOwnerIdLong());
         if (owner != null) sb.append("\nPo więcej informacji skontaktuj się z ").append(owner.getName());
-        commandEvent.getAuthor().openPrivateChannel().queue(channel -> {
-            channel.sendMessage(sb.toString()).queue();
-        });
+        commandEvent.getAuthor().openPrivateChannel().queue(channel -> channel.sendMessage(sb.toString()).queue());
     }
 }

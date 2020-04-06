@@ -1,4 +1,4 @@
-package pl.szpanel.discordbot.commands;
+package pl.szpanel.discordbot.command;
 
 import com.jagrosh.jdautilities.command.CommandEvent;
 import net.dv8tion.jda.api.entities.User;

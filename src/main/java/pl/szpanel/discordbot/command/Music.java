@@ -1,4 +1,4 @@
-package pl.szpanel.discordbot.commands;
+package pl.szpanel.discordbot.command;
 
 import com.jagrosh.jdautilities.command.Command;
 import com.jagrosh.jdautilities.command.CommandEvent;
@@ -9,16 +9,12 @@ import net.dv8tion.jda.api.entities.MessageChannel;
 import net.dv8tion.jda.api.entities.TextChannel;
 import net.dv8tion.jda.api.entities.User;
 import pl.szpanel.discordbot.Bot;
-import pl.szpanel.discordbot.data.configs.Config;
 import pl.szpanel.discordbot.data.configs.VoiceChannels;
 import pl.szpanel.discordbot.musicbot.GuildMusicManager;
-import pl.szpanel.discordbot.musicbot.MusicBotManager;
 
 import java.awt.*;
 import java.util.Objects;
 import java.util.concurrent.BlockingQueue;
-
-import static java.awt.SystemColor.info;
 
 public class Music extends Command {
 

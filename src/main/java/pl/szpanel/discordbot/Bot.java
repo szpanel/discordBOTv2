@@ -1,16 +1,14 @@
 package pl.szpanel.discordbot;
 
-import com.jagrosh.jdautilities.command.Command;
 import com.jagrosh.jdautilities.command.CommandClient;
 import com.jagrosh.jdautilities.command.CommandClientBuilder;
 import com.mongodb.client.MongoDatabase;
 import com.sedmelluq.discord.lavaplayer.jdaudp.NativeAudioSendFactory;
 import net.dv8tion.jda.api.JDABuilder;
-import net.dv8tion.jda.api.entities.Activity;
 import org.bson.Document;
-import pl.szpanel.discordbot.commands.HelpConsumer;
-import pl.szpanel.discordbot.commands.Music;
-import pl.szpanel.discordbot.commands.Test;
+import pl.szpanel.discordbot.command.HelpConsumer;
+import pl.szpanel.discordbot.command.Music;
+import pl.szpanel.discordbot.command.Test;
 import pl.szpanel.discordbot.data.configs.Config;
 import pl.szpanel.discordbot.data.databases.Mongo;
 import pl.szpanel.discordbot.musicbot.MusicBotManager;
